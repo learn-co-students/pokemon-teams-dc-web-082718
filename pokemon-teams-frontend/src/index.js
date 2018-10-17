@@ -60,16 +60,17 @@ function renderTrainerCard(trainer){
 function addPokemonListener(){
   let data = {trainer_id: this.dataset.trainerId}
 
+
   fetch(POKEMONS_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(data)
   }).then(res => res.json())
     .then(() => {
+      //re-render trainer card
       document.querySelector('main').innerHTML = ""
       fetchAllTrainers()
     })
-    //re-render trainer card
 }
 
 function releasePokemonListener(){
