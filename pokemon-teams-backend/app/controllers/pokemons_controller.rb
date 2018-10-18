@@ -34,6 +34,16 @@ class PokemonsController < ApplicationController
     end
   end
 
+  def index
+    @pokemon = Pokemon.all
+    render json: @pokemon
+  end
+
+  def show
+    @pokemon = Pokemon.find(params[:id])
+    render json: @pokemon
+  end
+
   private
   def pokemon_params
     params.require(:pokemon).permit(:nickname, :species, :trainer_id)
